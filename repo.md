@@ -27,7 +27,7 @@ hahaha! it's completely free. so, just take a look and decide what you can do.
 - Some GUI Applications
 - Some Basic Cracking Scripts
 - Some Web Scraping Scripts
-- Some Networing Scripts
+- Some Networking Scripts
 - Some Raw Socket Programming Scripts
 - Network Packet Handling Script With Raw Socket Programming
 - Some Wireless Related Scripts (Using Scapy and Raw)
@@ -140,7 +140,7 @@ There Are 2 Methods.
 
 9. [Fbsr](https://github.com/surajsinghbisht054/fbsr.git)
 > Facebook Scrapping Scripts
-
+>> A simple Python Script That Can Login In Your Facebook Account To Perform Various Tasks.
 
 
 10. [Gameofchess](https://github.com/surajsinghbisht054/GameOfChess.git)
@@ -150,20 +150,29 @@ There Are 2 Methods.
 
 11. [Hash encrypter](https://github.com/surajsinghbisht054/hash_encrypter.git)
 > Simple Hash Encrypting App
+>> This Script Provides a Simple Interface To Calculate Hash Values Of Any Data.
 
 
 
 12. [Information gathering python web scraping scripts](https://github.com/surajsinghbisht054/Information_Gathering_Python_Web_Scraping_Scripts.git)
 > Some Information Gathering Scripts Based On Web Scrapping Concepts
-
+	- Crawler : A Website Crawling Script
+	- Daily_Mail Headling Extractor 
+	- File Downloader Script
+	- Google Result Page Scraping Script
+	- Html Link Extracting Script
+	- Image Downloading Script
+	- Live Score Scraping Script
+	- Bandwidth Speed Testing script
+	- Automatic Desktop Wallpaper Updating Script
 
 13. [Ludogame](https://github.com/surajsinghbisht054/LudoGame.git)
-> Simple Ludo Game
+> Simple Ludo Game 
 
 
 
 14. [Magicstick editor](https://github.com/surajsinghbisht054/MagicStick_Editor.git)
-> A Nice Text Editor App
+> A Nice Text Editor App With Various High Quality Features
 
 
 
@@ -186,7 +195,7 @@ There Are 2 Methods.
 
 
 19. [Py filecipher](https://github.com/surajsinghbisht054/py-filecipher.git)
-> Simple File Encrypter And Decrypter
+> Simple File Encrypter And Decrypter Script Using AES-256 Bit Encryption
 
 
 20. [Py http header sniffer](https://github.com/surajsinghbisht054/py-HTTP-Header-Sniffer.git)
@@ -200,6 +209,13 @@ There Are 2 Methods.
 
 22. [Py packet](https://github.com/surajsinghbisht054/py-packet.git)
 > Python Script For Packet Sniffing (pypacket)
+>
+	### Features
+	- No External Dependencies
+	- Using Custom Cython Script For Extracting Header
+	- Supported Header: TCP/IP, IPv4 ,UDP, ICMP
+	- Fast Header Extraction
+
 
 
 
@@ -210,7 +226,12 @@ There Are 2 Methods.
 
 24. [Py portscanner](https://github.com/surajsinghbisht054/py-portscanner.git)
 > Python Port Scanning Script
-
+>
+	# Featues:
+	- High Speed Port scanning Through Threadings.
+	- Stable Version with Some Extra Features
+	- Multithreading Used for high performance
+	- This port scanner has the capability to take host 
 
 
 25. [Py rarcrack](https://github.com/surajsinghbisht054/py-rarcrack.git)
@@ -339,15 +360,16 @@ There Are 2 Methods.
 
 
 45. [Wireless scripts](https://github.com/surajsinghbisht054/wireless_scripts.git)
+> Collection Of Wireless Testing Related Scripts
 > 
-> 1. WLAN SSID Sniffer Using Python And Socket (ap_socket.py)
-> 2. WLAN Access Point And Client Sniffer Using Python and Scapy (captureclients.py)
-> 3. WLAN Dos Detector Using Python and Scapy (deauthentication_detector.py)
-> 4. WLAN SSID Sniffer Using Python And Scapy (getwifiinfo.py)
-> 5. WLAN Dos Attacker Using Python And Scapy - Wifi Jammer (wifijammer.py)
-> 6. WLAN Live Beacon Packet Analyser Using Python And PyShark (LiveBeacon.py)
-> 7. WLAN Wireless Deauth Packet Creater and Sender Using python And Scapy (Wirelessdeauth.py)
-> 
+	-  WLAN SSID Sniffer Using Python And Socket (ap_socket.py)
+	-  WLAN Access Point And Client Sniffer Using Python and Scapy (captureclients.py)
+	-  WLAN Dos Detector Using Python and Scapy (deauthentication_detector.py)
+	-  WLAN SSID Sniffer Using Python And Scapy (getwifiinfo.py)
+	-  WLAN Dos Attacker Using Python And Scapy - Wifi Jammer (wifijammer.py)
+	-  WLAN Live Beacon Packet Analyser Using Python And PyShark (LiveBeacon.py)
+	-  WLAN Wireless Deauth Packet Creater and Sender Using python And Scapy (Wirelessdeauth.py)
+
 
 
 
