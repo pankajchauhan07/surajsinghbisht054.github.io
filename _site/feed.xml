@@ -1,49 +1,965 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-04-28T14:49:16+05:30</updated><id>http://localhost:4000/</id><title type="html">I’m Suraj Singh</title><subtitle>Student | Blogger | Programmer | Thinker</subtitle><entry><title type="html">Searching For Beginners Python Projects Ideas</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Searching For Beginners Python Projects Ideas" /><published>2014-03-03T00:00:00+05:30</published><updated>2014-03-03T00:00:00+05:30</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">## Hello Guys Welcome here,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-11T16:26:21+05:30</updated><id>http://localhost:4000/</id><title type="html">I’m Suraj Singh</title><subtitle>Student | Blogger | Programmer | Thinker</subtitle><entry><title type="html">Protostar Stack7 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack7-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack7 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack7</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack7-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
 
-My Name is Suraj Singh Bisht. You can read about me [here]({{ base.url }}/about)
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/05/binary-exploitation-protostar-stack7.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input path please: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__builtin_return_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xb0000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xb0000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bzzzt (%p)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;got path %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strdup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 
 
-----
 
-### Purpose Of This Site?
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
- I created this blog to share my beginning &amp; intermediate projects ideas and repositories with newbies programmers because when
-i was a newbie in this feild, i founded many ideas and books to learn programming in boring style. so, i created my
-own interesting style. (try and learn). [check here]({{ base.url }}/docs)
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
 
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack6 introduces &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;to .text to gain code execution.
 
+The metasploit tool “msfelfscan” can make searching &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;suitable instructions very easy, otherwise looking through objdump output will suffice.
 
-----
-There are more than 500 programming languages. Hence, it’s pretty normal for you to start learning a new programming language today. It’s possible that you know C++ and Java but your work requires Python or you are well versed in Python and you need to code in Java at work. Or maybe you want to learn that cool language just to expand your expertise.
+This level is at /opt/protostar/bin/stack7&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-What are your options if you want to learn a new programming language?
+&lt;h1 id=&quot;concept&quot;&gt;Concept&lt;/h1&gt;
 
-- Learn from some online tutorial or
-- Learn from some online (MOOC) course
-- Some of you may even argue that the best way of learning a new language is actually as follows:
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Well, Its very unique &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; here, as we know that we can&lt;span class=&quot;s1&quot;&gt;'t overwrite return address starts from 0xb.......
+So, what we will do is, find a special and suitable instruction from source and points our EIP to it....
 
-&gt;&gt; Learn syntax of the new programming language and
-&gt;&gt; Build some personal project using that language
-&gt;&gt; Fair enough! This makes sure that you apply the knowledge you gain from learning the syntax of the language you want to learn.
+For Example:
+          At the end of getpath function, To execute strdup operation our system will copy all codes into eax
+registers. so, we just need to find call eax instruction in source code and then point our eip to it.
 
-I have developed more than 45 mini projects while learning different concepts and techniques [click here]({{ base.url }}/docs). Trust me, 
-when you write code for your personal project which may be a weekend project or an overnight quick hack, 
-you write code to get something done. All you care about is — 
+To Find Instruction Use:
 
-&gt; “Does my code work?”. 
-
-You hardly care about the quality of the code.
-
-*Martin Fowler :-* 
-&gt; Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+objdump -S stack7 | grep &quot;call&quot;
 
 
-So, how do you learn good practices of the new programming language that you are trying to learn?
 
-Contribute to an open source project in that language.
-Surprised? Some of you may be thinking — 
-&gt; “But wait, open source is hard. We can contribute to an open source project only if we are expert in that language, right?”. 
+0         42        46          76         80     84
+===================================================
+|  '&lt;/span&gt;a&lt;span class=&quot;s1&quot;&gt;'*42 | '&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;cc&lt;span class=&quot;s1&quot;&gt;'*4 | '&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;90&lt;span class=&quot;s1&quot;&gt;'*30 | '&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;cc&lt;span class=&quot;s1&quot;&gt;'*4 | EIP |
+===================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-The answer is No
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/05/binary-exploitation-protostar-stack7.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
 
-Just Take A Look [here]({{ base.url }}/docs)</content><author><name></name></author><summary type="html">Hello Guys Welcome here,</summary></entry></feed>
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack6 Walkthrough Using Duplicate Code Execution</title><link href="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-duplicate-execution/" rel="alternate" type="text/html" title="Protostar Stack6 Walkthrough Using Duplicate Code Execution" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack6_6</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-duplicate-execution/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_6.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input path please: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__builtin_return_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bzzzt (%p)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;got path %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack6 looks at what happens when you have restrictions on the &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;address.
+
+This level can be &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;a couple of ways, 
+such as finding the duplicate of the payload &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;objdump &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;with this&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, or ret2libc, or even &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;orientated programming.
+
+It is strongly suggested you experiment with multiple ways of getting your code to execute here.
+
+This level is at /opt/protostar/bin/stack6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Disassembly:
+0x08048484 &amp;lt;getpath+0&amp;gt;: push   ebp
+0x08048485 &amp;lt;getpath+1&amp;gt;: mov    ebp,esp
+0x08048487 &amp;lt;getpath+3&amp;gt;: sub    esp,0x68
+0x0804848a &amp;lt;getpath+6&amp;gt;: mov    eax,0x80485d0
+0x0804848f &amp;lt;getpath+11&amp;gt;: mov    DWORD PTR [esp],eax
+0x08048492 &amp;lt;getpath+14&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x08048497 &amp;lt;getpath+19&amp;gt;: mov    eax,ds:0x8049720
+0x0804849c &amp;lt;getpath+24&amp;gt;: mov    DWORD PTR [esp],eax
+0x0804849f &amp;lt;getpath+27&amp;gt;: call   0x80483b0 &amp;lt;fflush@plt&amp;gt;
+0x080484a4 &amp;lt;getpath+32&amp;gt;: lea    eax,[ebp-0x4c]
+0x080484a7 &amp;lt;getpath+35&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484aa &amp;lt;getpath+38&amp;gt;: call   0x8048380 &amp;lt;gets@plt&amp;gt;
+0x080484af &amp;lt;getpath+43&amp;gt;: mov    eax,DWORD PTR [ebp+0x4]
+0x080484b2 &amp;lt;getpath+46&amp;gt;: mov    DWORD PTR [ebp-0xc],eax
+0x080484b5 &amp;lt;getpath+49&amp;gt;: mov    eax,DWORD PTR [ebp-0xc]
+0x080484b8 &amp;lt;getpath+52&amp;gt;: and    eax,0xbf000000
+0x080484bd &amp;lt;getpath+57&amp;gt;: cmp    eax,0xbf000000
+0x080484c2 &amp;lt;getpath+62&amp;gt;: jne    0x80484e4 &amp;lt;getpath+96&amp;gt;
+0x080484c4 &amp;lt;getpath+64&amp;gt;: mov    eax,0x80485e4
+0x080484c9 &amp;lt;getpath+69&amp;gt;: mov    edx,DWORD PTR [ebp-0xc]
+0x080484cc &amp;lt;getpath+72&amp;gt;: mov    DWORD PTR [esp+0x4],edx
+0x080484d0 &amp;lt;getpath+76&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484d3 &amp;lt;getpath+79&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x080484d8 &amp;lt;getpath+84&amp;gt;: mov    DWORD PTR [esp],0x1
+0x080484df &amp;lt;getpath+91&amp;gt;: call   0x80483a0 &amp;lt;_exit@plt&amp;gt;
+0x080484e4 &amp;lt;getpath+96&amp;gt;: mov    eax,0x80485f0
+0x080484e9 &amp;lt;getpath+101&amp;gt;: lea    edx,[ebp-0x4c]
+0x080484ec &amp;lt;getpath+104&amp;gt;: mov    DWORD PTR [esp+0x4],edx
+0x080484f0 &amp;lt;getpath+108&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484f3 &amp;lt;getpath+111&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x080484f8 &amp;lt;getpath+116&amp;gt;: leave  
+0x080484f9 &amp;lt;getpath+117&amp;gt;: ret &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;useful-commands&quot;&gt;Useful Commands&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~:# &lt;span class=&quot;nb&quot;&gt;ulimit&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; unlimited
+
+and Crash App with Overflow.
+
+Use objdump &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;core.crash.file&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_6.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack6 Walkthrough Using Return To Text Execution</title><link href="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-using-return-to-text/" rel="alternate" type="text/html" title="Protostar Stack6 Walkthrough Using Return To Text Execution" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack6_20</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-using-return-to-text/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_20.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input path please: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__builtin_return_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bzzzt (%p)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;got path %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack6 looks at what happens when you have restrictions on the &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;address.
+
+This level can be &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;a couple of ways, 
+such as finding the duplicate of the payload &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;objdump &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;with this&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, or ret2libc, or even &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;orientated programming.
+
+It is strongly suggested you experiment with multiple ways of getting your code to execute here.
+
+This level is at /opt/protostar/bin/stack6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Disassembly:
+0x08048484 &amp;lt;getpath+0&amp;gt;: push   ebp
+0x08048485 &amp;lt;getpath+1&amp;gt;: mov    ebp,esp
+0x08048487 &amp;lt;getpath+3&amp;gt;: sub    esp,0x68
+0x0804848a &amp;lt;getpath+6&amp;gt;: mov    eax,0x80485d0
+0x0804848f &amp;lt;getpath+11&amp;gt;: mov    DWORD PTR [esp],eax
+0x08048492 &amp;lt;getpath+14&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x08048497 &amp;lt;getpath+19&amp;gt;: mov    eax,ds:0x8049720
+0x0804849c &amp;lt;getpath+24&amp;gt;: mov    DWORD PTR [esp],eax
+0x0804849f &amp;lt;getpath+27&amp;gt;: call   0x80483b0 &amp;lt;fflush@plt&amp;gt;
+0x080484a4 &amp;lt;getpath+32&amp;gt;: lea    eax,[ebp-0x4c]
+0x080484a7 &amp;lt;getpath+35&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484aa &amp;lt;getpath+38&amp;gt;: call   0x8048380 &amp;lt;gets@plt&amp;gt;
+0x080484af &amp;lt;getpath+43&amp;gt;: mov    eax,DWORD PTR [ebp+0x4]
+0x080484b2 &amp;lt;getpath+46&amp;gt;: mov    DWORD PTR [ebp-0xc],eax
+0x080484b5 &amp;lt;getpath+49&amp;gt;: mov    eax,DWORD PTR [ebp-0xc]
+0x080484b8 &amp;lt;getpath+52&amp;gt;: and    eax,0xbf000000
+0x080484bd &amp;lt;getpath+57&amp;gt;: cmp    eax,0xbf000000
+0x080484c2 &amp;lt;getpath+62&amp;gt;: jne    0x80484e4 &amp;lt;getpath+96&amp;gt;
+0x080484c4 &amp;lt;getpath+64&amp;gt;: mov    eax,0x80485e4
+0x080484c9 &amp;lt;getpath+69&amp;gt;: mov    edx,DWORD PTR [ebp-0xc]
+0x080484cc &amp;lt;getpath+72&amp;gt;: mov    DWORD PTR [esp+0x4],edx
+0x080484d0 &amp;lt;getpath+76&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484d3 &amp;lt;getpath+79&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x080484d8 &amp;lt;getpath+84&amp;gt;: mov    DWORD PTR [esp],0x1
+0x080484df &amp;lt;getpath+91&amp;gt;: call   0x80483a0 &amp;lt;_exit@plt&amp;gt;
+0x080484e4 &amp;lt;getpath+96&amp;gt;: mov    eax,0x80485f0
+0x080484e9 &amp;lt;getpath+101&amp;gt;: lea    edx,[ebp-0x4c]
+0x080484ec &amp;lt;getpath+104&amp;gt;: mov    DWORD PTR [esp+0x4],edx
+0x080484f0 &amp;lt;getpath+108&amp;gt;: mov    DWORD PTR [esp],eax
+0x080484f3 &amp;lt;getpath+111&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;
+0x080484f8 &amp;lt;getpath+116&amp;gt;: leave  
+0x080484f9 &amp;lt;getpath+117&amp;gt;: ret &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_20.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack6 Walkthrough Using Return To Libc</title><link href="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-return-to-libc/" rel="alternate" type="text/html" title="Protostar Stack6 Walkthrough Using Return To Libc" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack6_11</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-return-to-libc/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_11.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input path please: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__builtin_return_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bzzzt (%p)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;got path %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack6 looks at what happens when you have restrictions on the &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;address.
+
+This level can be &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;a couple of ways, 
+such as finding the duplicate of the payload &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;objdump &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;with this&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, or ret2libc, or even &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;orientated programming.
+
+It is strongly suggested you experiment with multiple ways of getting your code to execute here.
+
+This level is at /opt/protostar/bin/stack6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Disassembly :
+0x08048484 &amp;lt;getpath+0&amp;gt;: push   ebp
+0x08048485 &amp;lt;getpath+1&amp;gt;: mov    ebp,esp
+0x08048487 &amp;lt;getpath+3&amp;gt;: sub    esp,0x68                     &amp;lt;&amp;lt; ==== Create Buffer Space
+0x0804848a &amp;lt;getpath+6&amp;gt;: mov    eax,0x80485d0                &amp;lt;&amp;lt; ====  Load Printing Text On EAX
+0x0804848f &amp;lt;getpath+11&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top of Stack
+0x08048492 &amp;lt;getpath+14&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x08048497 &amp;lt;getpath+19&amp;gt;: mov    eax,ds:0x8049720         &amp;lt;&amp;lt; ==== Load Value On Eax
+0x0804849c &amp;lt;getpath+24&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top Of Stack
+0x0804849f &amp;lt;getpath+27&amp;gt;: call   0x80483b0 &amp;lt;fflush@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Flush FUnction
+0x080484a4 &amp;lt;getpath+32&amp;gt;: lea    eax,[ebp-0x4c]           &amp;lt;&amp;lt; ==== Load Starting Address Of Bufer Variable 
+0x080484a7 &amp;lt;getpath+35&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top of Stack
+0x080484aa &amp;lt;getpath+38&amp;gt;: call   0x8048380 &amp;lt;gets@plt&amp;gt;     &amp;lt;&amp;lt; ==== Call Get Function
+0x080484af &amp;lt;getpath+43&amp;gt;: mov    eax,DWORD PTR [ebp+0x4]  &amp;lt;&amp;lt; ==== Load Return address Of Current Allocated stack queue Onto EAX
+0x080484b2 &amp;lt;getpath+46&amp;gt;: mov    DWORD PTR [ebp-0xc],eax  &amp;lt;&amp;lt; ==== Move EAX return address to variable space on stack
+0x080484b5 &amp;lt;getpath+49&amp;gt;: mov    eax,DWORD PTR [ebp-0xc]  &amp;lt;&amp;lt; ==== Load Return address of current allocated stack queue Onto EAX
+0x080484b8 &amp;lt;getpath+52&amp;gt;: and    eax,0xbf000000           &amp;lt;&amp;lt; ==== and function 
+0x080484bd &amp;lt;getpath+57&amp;gt;: cmp    eax,0xbf000000           &amp;lt;&amp;lt; ==== Compare EAX and Value
+0x080484c2 &amp;lt;getpath+62&amp;gt;: jne    0x80484e4 &amp;lt;getpath+96&amp;gt;   &amp;lt;&amp;lt; ==== Jump WHen Not Equal
+0x080484c4 &amp;lt;getpath+64&amp;gt;: mov    eax,0x80485e4            &amp;lt;&amp;lt; ==== Load Printable String Starting Address at EAX
+0x080484c9 &amp;lt;getpath+69&amp;gt;: mov    edx,DWORD PTR [ebp-0xc]  &amp;lt;&amp;lt; ==== Load RETURN address value on Edx
+0x080484cc &amp;lt;getpath+72&amp;gt;: mov    DWORD PTR [esp+0x4],edx  &amp;lt;&amp;lt; ==== Load EDX value at the top second place of stack
+0x080484d0 &amp;lt;getpath+76&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Load Eax value at the top of stack
+0x080484d3 &amp;lt;getpath+79&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x080484d8 &amp;lt;getpath+84&amp;gt;: mov    DWORD PTR [esp],0x1      &amp;lt;&amp;lt; ==== EXit Function Argument
+0x080484df &amp;lt;getpath+91&amp;gt;: call   0x80483a0 &amp;lt;_exit@plt&amp;gt;    &amp;lt;&amp;lt; ==== Call Exit Function
+0x080484e4 &amp;lt;getpath+96&amp;gt;: mov    eax,0x80485f0            &amp;lt;&amp;lt; ==== Load Printable String Starting Address at EAX
+0x080484e9 &amp;lt;getpath+101&amp;gt;: lea    edx,[ebp-0x4c]           &amp;lt;&amp;lt; ==== Load Starting Address Of Bufer Variable 
+0x080484ec &amp;lt;getpath+104&amp;gt;: mov    DWORD PTR [esp+0x4],edx  &amp;lt;&amp;lt; ==== Load EDX value at the top second place of stack
+0x080484f0 &amp;lt;getpath+108&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Load Eax value at the top of stack
+0x080484f3 &amp;lt;getpath+111&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x080484f8 &amp;lt;getpath+116&amp;gt;: leave                           &amp;lt;&amp;lt; ==== Reverse Of (push   ebp; mov    ebp,esp)
+0x080484f9 &amp;lt;getpath+117&amp;gt;: ret                             &amp;lt;&amp;lt; ==== Return Value&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Concept:
+
+
+ 0                  28                                                     104
+ &lt;span class=&quot;o&quot;&gt;=============================================================================&lt;/span&gt;
+ | Other Stuff      |         Focus Here &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Get Will Inject here&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             |
+&lt;span class=&quot;o&quot;&gt;==============================================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6_11.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack6 Walkthrough Using EGG Shell Method</title><link href="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-eggshell/" rel="alternate" type="text/html" title="Protostar Stack6 Walkthrough Using EGG Shell Method" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack6</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack6-walkthrough-eggshell/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input path please: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fflush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__builtin_return_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0xbf000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bzzzt (%p)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;got path %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;getpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack6 looks at what happens when you have restrictions on the &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;address.
+
+This level can be &lt;span class=&quot;k&quot;&gt;done in &lt;/span&gt;a couple of ways, 
+such as finding the duplicate of the payload &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;objdump &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;with this&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, or ret2libc, or even &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;orientated programming.
+
+It is strongly suggested you experiment with multiple ways of getting your code to execute here.
+
+This level is at /opt/protostar/bin/stack6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Disassembly :
+0x08048484 &amp;lt;getpath+0&amp;gt;: push   ebp
+0x08048485 &amp;lt;getpath+1&amp;gt;: mov    ebp,esp
+0x08048487 &amp;lt;getpath+3&amp;gt;: sub    esp,0x68                     &amp;lt;&amp;lt; ==== Create Buffer Space
+0x0804848a &amp;lt;getpath+6&amp;gt;: mov    eax,0x80485d0                &amp;lt;&amp;lt; ====  Load Printing Text On EAX
+0x0804848f &amp;lt;getpath+11&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top of Stack
+0x08048492 &amp;lt;getpath+14&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x08048497 &amp;lt;getpath+19&amp;gt;: mov    eax,ds:0x8049720         &amp;lt;&amp;lt; ==== Load Value On Eax
+0x0804849c &amp;lt;getpath+24&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top Of Stack
+0x0804849f &amp;lt;getpath+27&amp;gt;: call   0x80483b0 &amp;lt;fflush@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Flush FUnction
+0x080484a4 &amp;lt;getpath+32&amp;gt;: lea    eax,[ebp-0x4c]           &amp;lt;&amp;lt; ==== Load Starting Address Of Bufer Variable 
+0x080484a7 &amp;lt;getpath+35&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Place it at the Top of Stack
+0x080484aa &amp;lt;getpath+38&amp;gt;: call   0x8048380 &amp;lt;gets@plt&amp;gt;     &amp;lt;&amp;lt; ==== Call Get Function
+0x080484af &amp;lt;getpath+43&amp;gt;: mov    eax,DWORD PTR [ebp+0x4]  &amp;lt;&amp;lt; ==== Load Return address Of Current Allocated stack queue Onto EAX
+0x080484b2 &amp;lt;getpath+46&amp;gt;: mov    DWORD PTR [ebp-0xc],eax  &amp;lt;&amp;lt; ==== Move EAX return address to variable space on stack
+0x080484b5 &amp;lt;getpath+49&amp;gt;: mov    eax,DWORD PTR [ebp-0xc]  &amp;lt;&amp;lt; ==== Load Return address of current allocated stack queue Onto EAX
+0x080484b8 &amp;lt;getpath+52&amp;gt;: and    eax,0xbf000000           &amp;lt;&amp;lt; ==== and function 
+0x080484bd &amp;lt;getpath+57&amp;gt;: cmp    eax,0xbf000000           &amp;lt;&amp;lt; ==== Compare EAX and Value
+0x080484c2 &amp;lt;getpath+62&amp;gt;: jne    0x80484e4 &amp;lt;getpath+96&amp;gt;   &amp;lt;&amp;lt; ==== Jump WHen Not Equal
+0x080484c4 &amp;lt;getpath+64&amp;gt;: mov    eax,0x80485e4            &amp;lt;&amp;lt; ==== Load Printable String Starting Address at EAX
+0x080484c9 &amp;lt;getpath+69&amp;gt;: mov    edx,DWORD PTR [ebp-0xc]  &amp;lt;&amp;lt; ==== Load RETURN address value on Edx
+0x080484cc &amp;lt;getpath+72&amp;gt;: mov    DWORD PTR [esp+0x4],edx  &amp;lt;&amp;lt; ==== Load EDX value at the top second place of stack
+0x080484d0 &amp;lt;getpath+76&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Load Eax value at the top of stack
+0x080484d3 &amp;lt;getpath+79&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x080484d8 &amp;lt;getpath+84&amp;gt;: mov    DWORD PTR [esp],0x1      &amp;lt;&amp;lt; ==== EXit Function Argument
+0x080484df &amp;lt;getpath+91&amp;gt;: call   0x80483a0 &amp;lt;_exit@plt&amp;gt;    &amp;lt;&amp;lt; ==== Call Exit Function
+0x080484e4 &amp;lt;getpath+96&amp;gt;: mov    eax,0x80485f0            &amp;lt;&amp;lt; ==== Load Printable String Starting Address at EAX
+0x080484e9 &amp;lt;getpath+101&amp;gt;: lea    edx,[ebp-0x4c]           &amp;lt;&amp;lt; ==== Load Starting Address Of Bufer Variable 
+0x080484ec &amp;lt;getpath+104&amp;gt;: mov    DWORD PTR [esp+0x4],edx  &amp;lt;&amp;lt; ==== Load EDX value at the top second place of stack
+0x080484f0 &amp;lt;getpath+108&amp;gt;: mov    DWORD PTR [esp],eax      &amp;lt;&amp;lt; ==== Load Eax value at the top of stack
+0x080484f3 &amp;lt;getpath+111&amp;gt;: call   0x80483c0 &amp;lt;printf@plt&amp;gt;   &amp;lt;&amp;lt; ==== Call Print Function
+0x080484f8 &amp;lt;getpath+116&amp;gt;: leave                           &amp;lt;&amp;lt; ==== Reverse Of (push   ebp; mov    ebp,esp)
+0x080484f9 &amp;lt;getpath+117&amp;gt;: ret                             &amp;lt;&amp;lt; ==== Return Value&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Concept:
+
+
+ 0                  28                                                     104
+ &lt;span class=&quot;o&quot;&gt;=============================================================================&lt;/span&gt;
+ | Other Stuff      |         Focus Here &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Get Will Inject here&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;             |
+&lt;span class=&quot;o&quot;&gt;==============================================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack6.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack5 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack5-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack5 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack5</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack5-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack5.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack5 is a standard buffer overflow, this &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;introducing shellcode.
+
+This level is at /opt/protostar/bin/stack5
+
+Hints
+
+At this point &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;, it might be easier to use someone elses shellcode
+If debugging the shellcode, use &lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;cc &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;int3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; to stop the program executing and &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;to the debugger
+remove the int3s once your shellcode is &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;(gdb) disass main
+Dump of assembler code for function main:
+0x080483c4 &amp;lt;main+0&amp;gt;:    push   %ebp
+0x080483c5 &amp;lt;main+1&amp;gt;:    mov    %esp,%ebp
+0x080483c7 &amp;lt;main+3&amp;gt;:    and    $0xfffffff0,%esp
+0x080483ca &amp;lt;main+6&amp;gt;:    sub    $0x50,%esp   &amp;lt; ============ Creating Space ONto stack
+0x080483cd &amp;lt;main+9&amp;gt;:    lea    0x10(%esp),%eax  &amp;lt; ======== Starting Point to Insert Values Into Create Space Buffer
+0x080483d1 &amp;lt;main+13&amp;gt;:   mov    %eax,(%esp)      &amp;lt; ======== Load Argument
+0x080483d4 &amp;lt;main+16&amp;gt;:   call   0x80482e8 &amp;lt;gets@plt&amp;gt; &amp;lt;===== Call Function
+0x080483d9 &amp;lt;main+21&amp;gt;:   leave
+0x080483da &amp;lt;main+22&amp;gt;:   ret
+End of assembler dump.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;0           16                                                    80         88    92    96             156
+ &lt;span class=&quot;o&quot;&gt;==========================================================================================================================&lt;/span&gt;
+ Starting &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; |                   &lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 64                          | Paddings | EBP | EIP |  NOPS &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 60   |   Shellcode  |  
+ &lt;span class=&quot;o&quot;&gt;==========================================================================================================================&lt;/span&gt;
+                                                                                      |_________________________^&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;registers-status--info&quot;&gt;Registers Status &amp;amp; Info&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; info registers
+eax            0xbffffc70       &lt;span class=&quot;nt&quot;&gt;-1073742736&lt;/span&gt;
+ecx            0xbffffc70       &lt;span class=&quot;nt&quot;&gt;-1073742736&lt;/span&gt;
+edx            0xb7fd9334       &lt;span class=&quot;nt&quot;&gt;-1208118476&lt;/span&gt;
+ebx            0xb7fd7ff4       &lt;span class=&quot;nt&quot;&gt;-1208123404&lt;/span&gt;
+esp            0xbffffcbc       0xbffffcbc
+ebp            0x42424242       0x42424242
+esi            0x0      0
+edi            0x0      0
+eip            0x80483da        0x80483da &amp;lt;main+22&amp;gt;
+eflags         0x200246 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; PF ZF IF ID &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+cs             0x73     115
+ss             0x7b     123
+ds             0x7b     123
+es             0x7b     123
+fs             0x0      0
+gs             0x33     51
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; x/100x &lt;span class=&quot;nv&quot;&gt;$esp&lt;/span&gt;
+0xbffffcbc:     0xbffffcc0      0x90909090      0x90909090      0x90909090
+0xbffffccc:     0x90909090      0x90909090      0x90909090      0x90909090
+0xbffffcdc:     0x90909090      0x90909090      0x90909090      0x90909090
+0xbffffcec:     0x90909090      0x90909090      0x90909090      0x90909090
+0xbffffcfc:     0x315e1aeb      0x074688c0      0x5e891e8d      0x0c468908
+0xbffffd0c:     0xf3890bb0      0x8d084e8d      0x80cd0c56      0xffffe1e8
+0xbffffd1c:     0x69622fff      0x68732f6e      0xb7ff6200      0xb7eadb9b
+0xbffffd2c:     0xb7ffeff4      0x00000001      0x08048310      0x00000000
+0xbffffd3c:     0x08048331      0x080483c4      0x00000001      0xbffffd64
+0xbffffd4c:     0x080483f0      0x080483e0      0xb7ff1040      0xbffffd5c
+0xbffffd5c:     0xb7fff8f8      0x00000001      0xbffffe77      0x00000000
+0xbffffd6c:     0xbffffe91      0xbffffea1      0xbffffeac      0xbffffece
+0xbffffd7c:     0xbffffee1      0xbffffeeb      0xbffffef6      0xbfffff38
+0xbffffd8c:     0xbfffff4c      0xbfffff5b      0xbfffff72      0xbfffff83
+0xbffffd9c:     0xbfffff8c      0xbfffff97      0xbfffff9f      0xbfffffac
+0xbffffdac:     0x00000000      0x00000020      0xb7fe2414      0x00000021
+0xbffffdbc:     0xb7fe2000      0x00000010      0x0febfbff      0x00000006
+0xbffffdcc:     0x00001000      0x00000011      0x00000064      0x00000003
+0xbffffddc:     0x08048034      0x00000004      0x00000020      0x00000005
+0xbffffdec:     0x00000007      0x00000007      0xb7fe3000      0x00000008
+0xbffffdfc:     0x00000000      0x00000009      0x08048310      0x0000000b
+0xbffffe0c:     0x00000000      0x0000000c      0x00000000      0x0000000d
+0xbffffe1c:     0x00000000      0x0000000e      0x00000000      0x00000017
+0xbffffe2c:     0x00000000      0x00000019      0xbffffe5b      0x0000001f
+0xbffffe3c:     0xbfffffe2      0x0000000f      0xbffffe6b      0x00000000
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; c
+Continuing&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack5.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack4 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack4-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack4 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack4</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack4-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack4.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;code flow successfully changed&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack4 takes a look at overwriting saved EIP and standard buffer overflows.
+
+This level is at /opt/protostar/bin/stack4
+
+Hints
+
+A variety of introductory papers into buffer overflows may help.
+gdb lets you &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; “run &amp;lt; input”
+EIP is not directly after the end of buffer, compiler padding can also increase the size.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;gdb-peda$ pdisass main
+Dump of assembler code for function main:
+   0x08048408 &amp;lt;+0&amp;gt;:	push   ebp        -------------------
+   0x08048409 &amp;lt;+1&amp;gt;:	mov    ebp,esp                      | --&amp;gt; Initialise Function
+   0x0804840b &amp;lt;+3&amp;gt;:	and    esp,0xfffffff0  --------------
+   0x0804840e &amp;lt;+6&amp;gt;:	sub    esp,0x50  -----------------------&amp;gt; Creating Space in Stack 50 [hex]
+   0x08048411 &amp;lt;+9&amp;gt;:	lea    eax,[esp+0x10] ------------------&amp;gt; Load Variable Buffer Starting POint Address Into EAX 0x10 [hex]
+   0x08048415 &amp;lt;+13&amp;gt;:	mov    DWORD PTR [esp],eax ---------&amp;gt; Place EAX at the top of stack
+   0x08048418 &amp;lt;+16&amp;gt;:	call   0x804830c &amp;lt;gets@plt&amp;gt; --------&amp;gt; Call Get Function
+=&amp;gt; 0x0804841d &amp;lt;+21&amp;gt;:	leave  -----------------------------&amp;gt; Reverse Of Initialise FUnction
+   0x0804841e &amp;lt;+22&amp;gt;:	ret    -----------------------------&amp;gt; Return [Our Target is Next To This Instruction In stack] &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;STACK
+
+
+0000| 0xffffcf80 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xffffcf90 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 64 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     &lt;span class=&quot;nt&quot;&gt;----------------&lt;/span&gt;
+0004| 0xffffcf84 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x2f &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;                                              |----&amp;gt;  Other Arguments &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Paddings&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+0008| 0xffffcf88 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7debdc8 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x2b76 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'v+'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;                            |
+0012| 0xffffcf8c &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7fd41b0 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7ddf000 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x464c457f &lt;span class=&quot;nt&quot;&gt;---------------&lt;/span&gt;
+0016| 0xffffcf90 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 64 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;----&lt;/span&gt;         &lt;span class=&quot;nt&quot;&gt;---------------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Get FUnction Starting Point
+0020| 0xffffcf94 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 60 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0024| 0xffffcf98 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 56 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0028| 0xffffcf9c &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 52 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0032| 0xffffcfa0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 48 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0036| 0xffffcfa4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 44 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0040| 0xffffcfa8 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 40 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     | &lt;span class=&quot;nt&quot;&gt;-------------------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Buffer 64 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Decimal]
+0044| 0xffffcfac &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 36 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0048| 0xffffcfb0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 32 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0052| 0xffffcfb4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 28 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0056| 0xffffcfb8 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 24 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0060| 0xffffcfbc &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 20 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0064| 0xffffcfc0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 16 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0068| 0xffffcfc4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt; &amp;lt;repeats 12 &lt;span class=&quot;nb&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt;     |
+0072| 0xffffcfc8 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aaaaaaaa&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;                 |
+0076| 0xffffcfcc &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aaaa&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;---------------------&lt;/span&gt;
+0080| 0xffffcfd0 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7f91000 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x1b1db0-----
+0084| 0xffffcfd4 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7f91000 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x1b1db0-----&amp;gt; Padds
+0088| 0xffffcfd8 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x0 &lt;span class=&quot;nt&quot;&gt;------------------------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Return Value
+0092| 0xffffcfdc &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0xf7df7637 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&amp;lt;__libc_start_main+247&amp;gt;:	add    esp,0x10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;-------&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Injection Point]
+0096| 0xffffcfe0 &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 0x1 
+
+
+
+
+0         16                                      80    84    88    92     96
+ &lt;span class=&quot;o&quot;&gt;===========================================================================&lt;/span&gt;
+  Paddings |  Bufffer this Area                    | pad | pad | EBP | RET |
+ &lt;span class=&quot;o&quot;&gt;===========================================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack4.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack3 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack3-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack3 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack3</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack3-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack3.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;code flow successfully changed&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)();&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;fp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;calling function pointer, jumping to 0x%08x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack3 looks at environment variables, and how they can be &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;, 
+and overwriting &lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;pointers stored on the stack 
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;as a prelude to overwriting the saved EIP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+
+Hints
+
+both gdb and objdump is your friend you determining where the win&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;lies &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;memory.
+This level is at /opt/protostar/bin/stack3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Dump of assembler code for function main:
+                                  
+0x08048438 &amp;lt;main+0&amp;gt;:	push   ebp  ----------------------
+0x08048439 &amp;lt;main+1&amp;gt;:	mov    ebp,esp                   |----&amp;gt; Initialising FUnction
+0x0804843b &amp;lt;main+3&amp;gt;:	and    esp,0xfffffff0  -----------
+0x0804843e &amp;lt;main+6&amp;gt;:	sub    esp,0x60      -----------------&amp;gt; Creating Space In Stack 60 [hex]        
+0x08048441 &amp;lt;main+9&amp;gt;:	mov    DWORD PTR [esp+0x5c],0x0  -----&amp;gt; Update Value 0 of Variable Modified   [INjectable Area]
+0x08048449 &amp;lt;main+17&amp;gt;:	lea    eax,[esp+0x1c] ---------  -----&amp;gt; LOad Variable Buffer Starting Point Address Into EAX 1c [hex]
+0x0804844d &amp;lt;main+21&amp;gt;:	mov    DWORD PTR [esp],eax      |-----&amp;gt; Initialise Get Function Call
+0x08048450 &amp;lt;main+24&amp;gt;:	call   0x8048330 &amp;lt;gets@plt&amp;gt; -----   
+0x08048455 &amp;lt;main+29&amp;gt;:	cmp    DWORD PTR [esp+0x5c],0x0 ------&amp;gt; Compare Modified Variable With Zero
+0x0804845a &amp;lt;main+34&amp;gt;:	je     0x8048477 &amp;lt;main+63&amp;gt;      ------&amp;gt; Jump When Equal
+0x0804845c &amp;lt;main+36&amp;gt;:	mov    eax,0x8048560            ------&amp;gt; Load this Value Into EAX Registers
+0x08048461 &amp;lt;main+41&amp;gt;:	mov    edx,DWORD PTR [esp+0x5c]
+0x08048465 &amp;lt;main+45&amp;gt;:	mov    DWORD PTR [esp+0x4],edx
+0x08048469 &amp;lt;main+49&amp;gt;:	mov    DWORD PTR [esp],eax
+0x0804846c &amp;lt;main+52&amp;gt;:	call   0x8048350 &amp;lt;printf@plt&amp;gt;
+0x08048471 &amp;lt;main+57&amp;gt;:	mov    eax,DWORD PTR [esp+0x5c]
+0x08048475 &amp;lt;main+61&amp;gt;:	call   eax
+0x08048477 &amp;lt;main+63&amp;gt;:	leave  
+0x08048478 &amp;lt;main+64&amp;gt;:	ret &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;0                        28                                                      92             96
+ &lt;span class=&quot;o&quot;&gt;===============================================================================================&lt;/span&gt;
+        Other Things     |  Bufffer this Area                                    | point to win | 
+ &lt;span class=&quot;o&quot;&gt;===============================================================================================&lt;/span&gt;
+                                                                                       ^
+                                                                                    Its Working Because Of fp&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; incorrect code&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack3.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack2 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack2-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack2 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack2</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack2-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack2.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GREENIE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;errx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;please set the GREENIE environment variable&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0d0a0d0a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;you have correctly modified the variable&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Try again, you got 0x%08x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Stack2 looks at environment variables, and how they can be set.
+
+This level is at /opt/protostar/bin/stack2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;Dump of assembler code for function main:
+   0x08048494 &amp;lt;+0&amp;gt;:	push   ebp
+   0x08048495 &amp;lt;+1&amp;gt;:	mov    ebp,esp
+   0x08048497 &amp;lt;+3&amp;gt;:	and    esp,0xfffffff0
+   0x0804849a &amp;lt;+6&amp;gt;:	sub    esp,0x60                            &amp;lt;&amp;lt; ==== 96 Bits Buffer Created
+   0x0804849d &amp;lt;+9&amp;gt;:	mov    DWORD PTR [esp],0x80485e0           &amp;lt;&amp;lt; ==== Moving Something Into Stack Top
+   0x080484a4 &amp;lt;+16&amp;gt;:	call   0x804837c &amp;lt;getenv@plt&amp;gt;          &amp;lt;&amp;lt; ==== Call GetEnvironment Function
+   0x080484a9 &amp;lt;+21&amp;gt;:	mov    DWORD PTR [esp+0x5c],eax        &amp;lt;&amp;lt; ==== Load Number Of GREENIE variable found
+   0x080484ad &amp;lt;+25&amp;gt;:	cmp    DWORD PTR [esp+0x5c],0x0        &amp;lt;&amp;lt; ==== Comparing GREENIE with number
+   0x080484b2 &amp;lt;+30&amp;gt;:	jne    0x80484c8 &amp;lt;main+52&amp;gt;             &amp;lt;&amp;lt; ==== Jump Condition
+   0x080484b4 &amp;lt;+32&amp;gt;:	mov    DWORD PTR [esp+0x4],0x80485e8
+   0x080484bc &amp;lt;+40&amp;gt;:	mov    DWORD PTR [esp],0x1
+   0x080484c3 &amp;lt;+47&amp;gt;:	call   0x80483bc &amp;lt;errx@plt&amp;gt;
+   0x080484c8 &amp;lt;+52&amp;gt;:	mov    DWORD PTR [esp+0x58],0x0        &amp;lt;&amp;lt; ==== assign 0 into modified variable
+   0x080484d0 &amp;lt;+60&amp;gt;:	mov    eax,DWORD PTR [esp+0x5c]        &amp;lt;&amp;lt; ==== Copy GREENIE variable from stack To EAX
+   0x080484d4 &amp;lt;+64&amp;gt;:	mov    DWORD PTR [esp+0x4],eax         &amp;lt;&amp;lt; ==== Copy GREENIE address from EAX to Top of Stack
+   0x080484d8 &amp;lt;+68&amp;gt;:	lea    eax,[esp+0x18]                  &amp;lt;&amp;lt; ==== LOad Starting Address Of Stack To Update buffer variable
+   0x080484dc &amp;lt;+72&amp;gt;:	mov    DWORD PTR [esp],eax             &amp;lt;&amp;lt; ==== Copy Starting Buffer Address To Top Of Stack
+   0x080484df &amp;lt;+75&amp;gt;:	call   0x804839c &amp;lt;strcpy@plt&amp;gt;          &amp;lt;&amp;lt; ==== call strcpy
+   0x080484e4 &amp;lt;+80&amp;gt;:	mov    eax,DWORD PTR [esp+0x58]
+   0x080484e8 &amp;lt;+84&amp;gt;:	cmp    eax,0xd0a0d0a
+   0x080484ed &amp;lt;+89&amp;gt;:	jne    0x80484fd &amp;lt;main+105&amp;gt;
+   0x080484ef &amp;lt;+91&amp;gt;:	mov    DWORD PTR [esp],0x8048618
+   0x080484f6 &amp;lt;+98&amp;gt;:	call   0x80483cc &amp;lt;puts@plt&amp;gt;
+   0x080484fb &amp;lt;+103&amp;gt;:	jmp    0x8048512 &amp;lt;main+126&amp;gt;
+   0x080484fd &amp;lt;+105&amp;gt;:	mov    edx,DWORD PTR [esp+0x58]
+   0x08048501 &amp;lt;+109&amp;gt;:	mov    eax,0x8048641
+   0x08048506 &amp;lt;+114&amp;gt;:	mov    DWORD PTR [esp+0x4],edx
+   0x0804850a &amp;lt;+118&amp;gt;:	mov    DWORD PTR [esp],eax
+   0x0804850d &amp;lt;+121&amp;gt;:	call   0x80483ac &amp;lt;printf@plt&amp;gt;
+   0x08048512 &amp;lt;+126&amp;gt;:	leave  
+   0x08048513 &amp;lt;+127&amp;gt;:	ret &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;0                        28                                                      92        96
+ &lt;span class=&quot;o&quot;&gt;============================================================================================&lt;/span&gt;
+        Other Things     |  Injectable Area                                      | modified | 
+ &lt;span class=&quot;o&quot;&gt;============================================================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack2.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry><entry><title type="html">Protostar Stack1 Walkthrough</title><link href="http://localhost:4000/binary-exploitation-protostar-stack1-walkthrough/" rel="alternate" type="text/html" title="Protostar Stack1 Walkthrough" /><published>2018-05-11T00:00:00+05:30</published><updated>2018-05-11T00:00:00+05:30</updated><id>http://localhost:4000/binary-exploitation-protostar-stack1</id><content type="html" xml:base="http://localhost:4000/binary-exploitation-protostar-stack1-walkthrough/">&lt;h1 id=&quot;walkthrough&quot;&gt;Walkthrough&lt;/h1&gt;
+&lt;p&gt;Hello Guyz,
+Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.&lt;/p&gt;
+
+&lt;p&gt;Basically, My Goal is Just to provide you hints, so that you can Understand all concepts on your own.&lt;/p&gt;
+
+&lt;p&gt;But If still after reading this hint post, you are not understanding concepts clearly and want to see Exploit Code And Other Details then you can visit my blog posts. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack1.html&quot;&gt;click here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code&quot;&gt;Source Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;errx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;please specify an argument&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;strcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x61626364&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;you have correctly got the variable to the right value&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Try again, you got 0x%08x&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;hints&quot;&gt;Hints&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;This level looks at the concept of modifying variables to specific values &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the program, and how the variables are laid out &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;memory.
+
+This level is at /opt/protostar/bin/stack1
+
+Hints
+
+If you are unfamiliar with the hexadecimal being displayed, “man ascii” is your friend.
+Protostar is little endian&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;disassembly-of-code&quot;&gt;Disassembly Of Code&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-assembly&quot; data-lang=&quot;assembly&quot;&gt;   0x08048464 &amp;lt;+0&amp;gt;:	push   ebp
+   0x08048465 &amp;lt;+1&amp;gt;:	mov    ebp,esp
+   0x08048467 &amp;lt;+3&amp;gt;:	and    esp,0xfffffff0
+   0x0804846a &amp;lt;+6&amp;gt;:	sub    esp,0x60                  &amp;lt;&amp;lt; ====== 96 Bits Buffer Created
+   0x0804846d &amp;lt;+9&amp;gt;:	cmp    DWORD PTR [ebp+0x8],0x1   &amp;lt;&amp;lt; ====== Comparing Args Variable with 1
+   0x08048471 &amp;lt;+13&amp;gt;:	jne    0x8048487 &amp;lt;main+35&amp;gt;   &amp;lt;&amp;lt; ====== Jump Condition
+   0x08048473 &amp;lt;+15&amp;gt;:	mov    DWORD PTR [esp+0x4],0x80485a0 
+   0x0804847b &amp;lt;+23&amp;gt;:	mov    DWORD PTR [esp],0x1
+   0x08048482 &amp;lt;+30&amp;gt;:	call   0x8048388 &amp;lt;errx@plt&amp;gt;
+   0x08048487 &amp;lt;+35&amp;gt;:	mov    DWORD PTR [esp+0x5c],0x0  &amp;lt;&amp;lt; ===== Variable Value [modified variable]
+   0x0804848f &amp;lt;+43&amp;gt;:	mov    eax,DWORD PTR [ebp+0xc]   &amp;lt;&amp;lt; ===== BUffer Starting Address To Insert String Through Strcpy
+   0x08048492 &amp;lt;+46&amp;gt;:	add    eax,0x4                  &amp;lt;&amp;lt; ===== Add 4 To EAX
+   0x08048495 &amp;lt;+49&amp;gt;:	mov    eax,DWORD PTR [eax]      &amp;lt;&amp;lt; ===== Loading Data From EAX mapped  
+   0x08048497 &amp;lt;+51&amp;gt;:	mov    DWORD PTR [esp+0x4],eax  &amp;lt;&amp;lt; ===== Storing Current EAX Value Into Stack 
+   0x0804849b &amp;lt;+55&amp;gt;:	lea    eax,[esp+0x1c]           &amp;lt;&amp;lt; ===== Starting POint Address To Insert Data Into Stack Buffer
+   0x0804849f &amp;lt;+59&amp;gt;:	mov    DWORD PTR [esp],eax        
+   0x080484a2 &amp;lt;+62&amp;gt;:	call   0x8048368 &amp;lt;strcpy@plt&amp;gt;
+   0x080484a7 &amp;lt;+67&amp;gt;:	mov    eax,DWORD PTR [esp+0x5c]
+   0x080484ab &amp;lt;+71&amp;gt;:	cmp    eax,0x61626364
+   0x080484b0 &amp;lt;+76&amp;gt;:	jne    0x80484c0 &amp;lt;main+92&amp;gt;
+   0x080484b2 &amp;lt;+78&amp;gt;:	mov    DWORD PTR [esp],0x80485bc
+   0x080484b9 &amp;lt;+85&amp;gt;:	call   0x8048398 &amp;lt;puts@plt&amp;gt;
+   0x080484be &amp;lt;+90&amp;gt;:	jmp    0x80484d5 &amp;lt;main+113&amp;gt;
+   0x080484c0 &amp;lt;+92&amp;gt;:	mov    edx,DWORD PTR [esp+0x5c]
+   0x080484c4 &amp;lt;+96&amp;gt;:	mov    eax,0x80485f3
+   0x080484c9 &amp;lt;+101&amp;gt;:	mov    DWORD PTR [esp+0x4],edx
+   0x080484cd &amp;lt;+105&amp;gt;:	mov    DWORD PTR [esp],eax
+   0x080484d0 &amp;lt;+108&amp;gt;:	call   0x8048378 &amp;lt;printf@plt&amp;gt;
+   0x080484d5 &amp;lt;+113&amp;gt;:	leave  
+   0x080484d6 &amp;lt;+114&amp;gt;:	ret    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;stack-status&quot;&gt;Stack Status&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;0                        28                                                      92        96
+ &lt;span class=&quot;o&quot;&gt;============================================================================================&lt;/span&gt;
+        Other Things     |  Injectable Area                                      | modified | 
+ &lt;span class=&quot;o&quot;&gt;============================================================================================&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For Working Exploit Script And Other Complete Details. &lt;a href=&quot;http://www.bitforestinfo.com/2018/04/binary-exploitation-protostar-stack1.html&quot;&gt;Check here&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Thanks For Visiting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Have a nice day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Walkthrough Hello Guyz, Today, Here I am going to share with you my walkthrough exploitation research, tools Stuff and Exploit That Can help you in completing Exploit-Exercise Protostar Level.</summary></entry></feed>
